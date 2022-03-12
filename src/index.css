@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.nav-menu {
-
-}
-
 .menu-bars{
   margin-left: 2rem;
   font-size: 2rem;
@@ -38,34 +34,12 @@ body {
   padding: 0;
 }
 
-/* nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  background-color: #ffb30b;
-  margin: 0;
-}
-
-nav a,
-nav a:visited,
-nav a:focus {
-  color: #333;
-  padding: 20px;
-  display: block;
-} */
-
 .content {
   margin-top: 20px;
 }
 
 .random {
   text-align: center;
-}
-
-.random img {
-  margin-top: 20px;
-  /* min-width: 30%; */
-  height: auto;
 }
 
 .gallery {
