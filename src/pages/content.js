@@ -12,6 +12,35 @@ const Content = () => {
   const [loadingState, setLoadingState] = useState(STATUS_FETCHING);
   const [images, setImages] = useState([]);
 
+  const loadNew = async () => {
+    setLoadingState(STATUS_FETCHING);
+    setPage(page + 1);
+    if (id) {
+      const res = await fetch(
+        `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&category_ids=${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setImages([...images, ...data]);
+    } else {
+      const res = await fetch(
+        `https://api.thecatapi.com/v1/images/search?limit=${limit}&page=${page}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setImages([...images, ...data]);
+    }
+    setLoadingState(STATUS_FETCHED);
+  };
+
   const loadMore = async () => {
     setLoadingState(STATUS_FETCHING);
     setPage(page + 1);
@@ -48,7 +77,7 @@ const Content = () => {
 
   useEffect(() => {
     if (images.length > 0) return;
-    loadMore();
+    loadNew();
   }, [images]);
 
   return (
